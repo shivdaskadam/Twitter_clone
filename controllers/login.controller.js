@@ -41,7 +41,7 @@ class LoginController {
 		})
 		
         app.route('/:userId')
-		.post(async (request, response, next) => {
+		.put(async (request, response, next) => {
 			try {
 				const {
 					client_code
