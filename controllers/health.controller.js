@@ -15,7 +15,7 @@ class HealthController {
 							CONSTANTS.EVENT_EMIT
 						],
 						data: { 
-								action : Constants.ACTION.CHECK_APPLICATION_HEALTH,
+								action : CONSTANTS.ACTION.CHECK_APPLICATION_HEALTH,
 								headers : { ...request.headers},
 							    request: {...request.params},
 								response: {}

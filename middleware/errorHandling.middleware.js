@@ -33,7 +33,7 @@ module.exports = async (error, request, response, next) => {
 		}
 		const request_data = {...request.body,...request.params,...request.query};
 		const headers = { ...request.headers};
-		logger.error({request_data,errorObj,headers},status);
+		// logger.error({request_data,errorObj,headers},status);
 		return response.status(status).json(errorObj);
 	} catch (e) {
 		return response.status(500).json({ 

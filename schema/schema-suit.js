@@ -1,4 +1,5 @@
 const CONSTANTS = require('../constants/appConstants');
+const joi = require('joi');
 const STRING = 'string';
 const INT = 'int';
 const DOUBLE = 'double';
@@ -60,4 +61,25 @@ module.exports = {
 			file_description : { type : 'string' }
 		}
 	},
+
+	userSchema : {
+		id: '/userSchema',
+		type: 'object',
+		required: ['name','email','password'],
+		properties: {
+			name : { type : 'string' },
+        	email : { type : 'string' },
+			password : { type : 'string' }
+    	}
+    },
+
+	loginSchema : {
+		id: '/loginSchema',
+		type: 'object',
+		required: ['email','password'],
+		properties: {
+        	email : { type : 'string' },
+			password : { type : 'string' }
+    	}
+	}
 };

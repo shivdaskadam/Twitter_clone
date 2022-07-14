@@ -5,11 +5,11 @@
             "url": "mongodb://fladmin:y5pruv%40_e7v9@mongodev.db.flexiloans.com:27017/FlexiLoansDB"
         },
         "mysql" : {
-            "host": "mysqldev.db.flexiloans.com",
+            "host": "localhost",
             "port": "3306",
-            "database": "los_dev_db1",
-            "user": "los_root",
-            "password": "r00T$1234",
+            "database": "Twitter",
+            "user": "root",
+            "password": "Flexi@66",
             "connection" : 10
         },
         "los" : {

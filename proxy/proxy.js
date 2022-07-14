@@ -36,7 +36,7 @@ class Proxy{
                     service : this.service_name,
                     raw_request : options
                 }
-                logger.service_calls(data);
+                // logger.service_calls(data);
             }
             catch(err){
                 reject(err);

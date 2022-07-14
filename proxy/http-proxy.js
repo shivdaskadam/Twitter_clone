@@ -79,7 +79,7 @@ class HttpProxy extends Proxy {
                 reject(err);
             }
             finally{
-               super.log(options);
+            //    super.log(options);
             }
         });
     }

@@ -16,6 +16,7 @@ const httpContext = require('express-http-context');
 const logger = require('./services/winstonLogging');
 const consoleLogger = require('./services/console.logging');
 const mongoConnect = require('./db/mongoConnection');
+const session = require('express-session');
 
 
 const { 
@@ -30,6 +31,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.text());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors({ credentials: true, origin: true }));
+app.use(session({ 
+  secret: 'Twitter_secret',
+  resave: false,
+  saveUninitialized: true,
+}))
 
 
 //use request context as middleware
@@ -51,9 +57,9 @@ app.use(errorHandlingMiddleware);
 // Do not change order above this
 
 //staring mongo connection
-mongoConnect(()=>{
-	console.log('Mongo server connected');
-  });
+// mongoConnect(()=>{
+// 	console.log('Mongo server connected');
+//   });
 
 //error logger global
 global.logger = logger();
