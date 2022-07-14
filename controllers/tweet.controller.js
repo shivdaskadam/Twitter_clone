@@ -1,29 +1,62 @@
 const RequestValidator = require('../validators/request.validator');
 const ResponseDecorator = require('../validators/response.decorator');
 const CONSTANTS = require('../constants/appConstants');
-const { loginSchema } = require('../schema/schema-suit');
-const LoginBiz = require('../biz/login.biz');
+const { tweetSchema } = require('../schema/schema-suit');
+const TweetBiz = require('../biz/tweet.biz');
 
-class LoginController {
+class TweetController {
 	register(app) {
-		app.route('/login')
+		app.route('/:userId/tweet')
 		.post(async (request, response, next) => {
 			try {
 				const {
 					client_code
 				} = request.header;
-				const validator = new RequestValidator(loginSchema);
+				const validator = new RequestValidator(tweetSchema);
 				validator.create({...request.params,...request.body});
 
-				const loginBiz = new LoginBiz();
-				const _result = await loginBiz.validate(request);
+				const tweetBiz = new TweetBiz();
+				const _result = await tweetBiz.create({...request.params,...request.body});
 				
 				const responseDecorator = new ResponseDecorator({...request.params,...request.body,client_code});
 				const result = responseDecorator.decorate(_result);
 				
 				response.json({
 					result,
-				}, `user Logged in sucessfully`, {
+				}, `created tweet sucessfully`, {
+					services: [
+						// CONSTANTS.LOGGING,
+						// CONSTANTS.EVENT_EMIT
+					],
+					data: { 
+							action : CONSTANTS.ACTION.SOME_CREATED,
+							headers : { ...request.headers},
+							request: {...request.params,...request.body},
+							response: result
+				}
+				});
+			} catch (error) {
+				next(error);
+			}
+		})
+        app.route('/:userId/tweet/:tweetId')
+        .put(async (request, response, next) => {
+			try {
+				const {
+					client_code
+				} = request.header;
+				// const validator = new RequestValidator(tweetSchema);
+				// validator.create({...request.params,...request.body});
+
+				const tweetBiz = new TweetBiz();
+				const _result = await tweetBiz.update({...request.params,...request.body});
+				
+				const responseDecorator = new ResponseDecorator({...request.params,...request.body,client_code});
+				const result = responseDecorator.decorate(_result);
+				
+				response.json({
+					result,
+				}, `deleted tweet sucessfully`, {
 					services: [
 						// CONSTANTS.LOGGING,
 						// CONSTANTS.EVENT_EMIT
@@ -40,40 +73,7 @@ class LoginController {
 			}
 		})
 		
-        app.route('/:userId')
-		.post(async (request, response, next) => {
-			try {
-				const {
-					client_code
-				} = request.header;
-				const validator = new RequestValidator(loginSchema);
-				validator.create({...request.params,...request.body});
-
-				const loginBiz = new LoginBiz();
-				const _result = await loginBiz.validate(request);
-				
-				const responseDecorator = new ResponseDecorator({...request.params,...request.body,client_code});
-				const result = responseDecorator.decorate(_result);
-				
-				response.json({
-					result,
-				}, `user Logged in sucessfully`, {
-					services: [
-						// CONSTANTS.LOGGING,
-						// CONSTANTS.EVENT_EMIT
-					],
-					data: { 
-							action : CONSTANTS.ACTION.SOME_CREATED,
-							headers : { ...request.headers},
-							request: {...request.params,...request.body},
-							response: result
-				}
-				});
-			} catch (error) {
-				next(error);
-			}
-		})
 	}
 }
 
-module.exports = LoginController;
+module.exports = TweetController;

@@ -68,8 +68,8 @@ module.exports = {
 		required: ['name','email','password'],
 		properties: {
 			name : { type : 'string' },
-        	email : { type : 'string' },
-			password : { type : 'string' }
+        	email : { type : 'string' ,pattern: "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"},
+			password : { type : 'string', }
     	}
     },
 
@@ -78,8 +78,38 @@ module.exports = {
 		type: 'object',
 		required: ['email','password'],
 		properties: {
-        	email : { type : 'string' },
-			password : { type : 'string' }
+        	email : { type : 'string' , pattern: "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"},
+			password : { type : 'string'}
+    	}
+	},
+
+	tweetSchema : {
+		id: '/tweetSchema',
+		type: 'object',
+		required: ['userId','tweet'],
+		properties: {
+        	userId : { type : 'string'},
+			tweet : { type : 'string'}
+    	}
+	},
+
+	reTweetSchema : {
+		id: '/reTweetSchema',
+		type: 'object',
+		required: ['userId','tweetId'],
+		properties: {
+        	userId : { type : 'string'},
+			tweetId : { type : 'string'}
+    	}
+	},
+
+	followSchema : {
+		id: '/followSchema',
+		type: 'object',
+		required: ['userId','followingId'],
+		properties: {
+        	userId : { type : 'string'},
+			followingId : { type : 'string'}
     	}
 	}
 };
