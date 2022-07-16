@@ -24,10 +24,20 @@ class LoginBiz {
 			}
 		});
 	}
+
 	update(data) {
 		return new Promise(async (resolve, reject) => {
 			try {
-				const result = {};
+				const queryUser = queryRepo.sql.UPDATE.USER;
+                const queryTweet = queryRepo.sql.UPDATE.TWEETUSER;
+                const queryRetweet = queryRepo.sql.UPDATE.RETWEETUSER;
+                const queryFollow = queryRepo.sql.UPDATE.FOLLOWUSER;
+                const queryRepository = new QueryRepository();
+				const resultUser = await queryRepository.create(queryUser,data);
+                const resultTweet = await queryRepository.create(queryTweet,data);
+                const resultReTweet = await queryRepository.create(queryRetweet,data);
+                const resultFollow = await queryRepository.create(queryFollow,data);
+                const result = {resultUser,resultTweet,resultReTweet,resultFollow}
 				resolve(result);
 			} catch(error){
 				return reject(error);

@@ -57,7 +57,7 @@ class FollowController {
 				
 				response.json({
 					result,
-				}, `deleted Retweet sucessfully`, {
+				}, `Unfollowed user sucessfully`, {
 					services: [
 						// CONSTANTS.LOGGING,
 						// CONSTANTS.EVENT_EMIT

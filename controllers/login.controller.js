@@ -23,7 +23,7 @@ class LoginController {
 				
 				response.json({
 					result,
-				}, `user Logged in sucessfully`, {
+				}, `user logged in sucessfully`, {
 					services: [
 						// CONSTANTS.LOGGING,
 						// CONSTANTS.EVENT_EMIT
@@ -46,18 +46,18 @@ class LoginController {
 				const {
 					client_code
 				} = request.header;
-				const validator = new RequestValidator(loginSchema);
-				validator.create({...request.params,...request.body});
+				// const validator = new RequestValidator(loginSchema);
+				// validator.create({...request.params,...request.body});
 
 				const loginBiz = new LoginBiz();
-				const _result = await loginBiz.validate(request);
+				const _result = await loginBiz.update({...request.params,...request.body});
 				
 				const responseDecorator = new ResponseDecorator({...request.params,...request.body,client_code});
 				const result = responseDecorator.decorate(_result);
 				
 				response.json({
 					result,
-				}, `user Logged in sucessfully`, {
+				}, `deleted user sucessfully`, {
 					services: [
 						// CONSTANTS.LOGGING,
 						// CONSTANTS.EVENT_EMIT

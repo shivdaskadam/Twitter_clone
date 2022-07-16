@@ -23,7 +23,7 @@ class FollowBiz {
     update(data) {
 		return new Promise(async (resolve, reject) => {
 			try {
-				const query = queryRepo.sql.UPDATE.USER;
+				const query = queryRepo.sql.UPDATE.FOLLOW;
                 const queryRepository = new QueryRepository();
 				const result = await queryRepository.create(query,data);
 				resolve(result);
