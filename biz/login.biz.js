@@ -14,6 +14,7 @@ class LoginBiz {
                 const query = queryRepo.sql.SELECT.LOGIN;
                 const queryRepository = new QueryRepository();
 				const response = await queryRepository.get_sql_data(query,{...data.body});
+				console.log(response)
                 if(response==null){
                     loggedIn = false;
                 }

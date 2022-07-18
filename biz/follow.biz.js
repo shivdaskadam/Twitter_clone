@@ -33,6 +33,32 @@ class FollowBiz {
 		});
 	}
 
+	getFollowers(data) {
+		return new Promise(async (resolve, reject) => {
+			try {
+                const query = queryRepo.sql.SELECT.FOLLOWERS;
+                const queryRepository = new QueryRepository();
+				const result = await queryRepository.create(query,data);
+				resolve(result);
+			} catch(error){
+				return reject(error);
+			}
+		});
+	}
+
+	getFollowing(data) {
+		return new Promise(async (resolve, reject) => {
+			try {
+                const query = queryRepo.sql.SELECT.FOLLOWING;
+                const queryRepository = new QueryRepository();
+				const result = await queryRepository.create(query,data);
+				resolve(result);
+			} catch(error){
+				return reject(error);
+			}
+		});
+	}
+
 }
 
 

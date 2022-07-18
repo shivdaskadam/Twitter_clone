@@ -24,7 +24,7 @@ class SearchController {
 				
 				response.json({
 					result,
-				}, `fetched some successfully.`, {
+				}, `fetched search successfully.`, {
 					services: [
 						CONSTANTS.LOGGING,
 						CONSTANTS.EVENT_EMIT

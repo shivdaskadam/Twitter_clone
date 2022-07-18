@@ -9,7 +9,7 @@
             "port": "3306",
             "database": "Twitter",
             "user": "root",
-            "password": "Flexi@66",
+            "password": "Flexi66",
             "connection" : 10
         },
         "los" : {

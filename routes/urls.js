@@ -7,6 +7,7 @@ const TweetController = require('../controllers/tweet.controller');
 const ReTweetController = require('../controllers/retweet.controller');
 const FollowController = require('../controllers/follow.controller');
 const UserController = require('../controllers/user.controller');
+const SearchController = require('../controllers/search.controller');
 
 const router = express.Router();
 
@@ -34,5 +35,8 @@ followController.register(router);
 
 const userController = new UserController();
 userController.register(router);
+
+const searchController = new SearchController();
+searchController.register(router);
 
 module.exports = router;

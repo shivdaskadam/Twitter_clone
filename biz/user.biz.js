@@ -18,8 +18,12 @@ class UserBiz {
                 const reTweetResult = await queryRepository.get_all_data(queryReTweet,data);
                 console.log(reTweetResult);
                 const map = new Map();
-                tweetResult.forEach((val) => map.set(val.created_at, { ...val }));
-                reTweetResult.forEach((val) => map.set(val.created_at, { ...val }));
+				if(tweetResult){
+                	tweetResult.forEach((val) => map.set(val.created_at, { ...val }));
+				}
+				if(reTweetResult){
+                	reTweetResult.forEach((val) => map.set(val.created_at, { ...val }));
+				}
                 const result = [...map.values()].sort((x, y) => y.created_at - x.created_at);
 				resolve(result);
 			} catch(error){
@@ -39,8 +43,12 @@ class UserBiz {
                 const reTweetResult = await queryRepository.get_all_data(queryReTweet,data);
                 console.log(reTweetResult);
                 const map = new Map();
-                tweetResult.forEach((val) => map.set(val.created_at, { ...val }));
-                reTweetResult.forEach((val) => map.set(val.created_at, { ...val }));
+				if(tweetResult){
+                	tweetResult.forEach((val) => map.set(val.created_at, { ...val }));
+				}
+				if(reTweetResult){
+                	reTweetResult.forEach((val) => map.set(val.created_at, { ...val }));
+				}
                 const result = [...map.values()].sort((x, y) => y.created_at - x.created_at);
 				resolve(result);
 			} catch(error){

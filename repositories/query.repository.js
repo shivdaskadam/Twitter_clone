@@ -9,7 +9,9 @@ class QueryRepo {
 					let rx = new RegExp(`{${key}}`, 'gi');
                     query = query.replace(rx, data[key] || '');
                 }
+				console.log(query);
 				const result = await mysql.execute(query, []);
+				console.log(result);
 				if (result.length > 0) {
                     return resolve(result[0]);
                 }
