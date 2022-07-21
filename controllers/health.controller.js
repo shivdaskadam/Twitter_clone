@@ -11,8 +11,8 @@ class HealthController {
 						result,
 					}, 'Application is running...', {
 						services: [
-							CONSTANTS.LOGGING,
-							CONSTANTS.EVENT_EMIT
+							// CONSTANTS.LOGGING,
+							// CONSTANTS.EVENT_EMIT
 						],
 						data: { 
 								action : CONSTANTS.ACTION.CHECK_APPLICATION_HEALTH,

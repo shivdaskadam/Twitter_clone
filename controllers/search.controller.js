@@ -26,8 +26,8 @@ class SearchController {
 					result,
 				}, `fetched search successfully.`, {
 					services: [
-						CONSTANTS.LOGGING,
-						CONSTANTS.EVENT_EMIT
+						// CONSTANTS.LOGGING,
+						// CONSTANTS.EVENT_EMIT
 					],
 					data: { 
 							action : CONSTANTS.ACTION.SOME_FETCHED,

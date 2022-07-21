@@ -17,6 +17,7 @@ class UserController {
 				// validator.create({...request.params,...request.query});
 
 				const userBiz = new UserBiz();
+				console.log(request.params)
 				const _result = await userBiz.fetchHomedata({...request.params,...request.query});
 				
 				const responseDecorator = new ResponseDecorator({...request.params,...request.query});

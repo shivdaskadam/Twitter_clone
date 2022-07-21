@@ -5,12 +5,12 @@ async function Login(){
     fetch("http://localhost:8008/login", {
 
     method: "POST",
-     
+
     body: JSON.stringify({
         email: email.value,
         password : password.value
     }),
-     
+
     headers: {
         "Content-type": "application/json; charset=UTF-8",
         "client_code" : "client_code"
@@ -27,4 +27,4 @@ async function Login(){
         }
     });
 
-}
+} 

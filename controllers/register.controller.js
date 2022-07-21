@@ -14,7 +14,7 @@ class RegisterController {
 				} = request.header;
 				const validator = new RequestValidator(userSchema);
 				validator.create({...request.params,...request.body});
-
+				console.log("cc",client_code);
 				const registerBiz = new RegisterBiz();
 				const _result = await registerBiz.create({...request.params,...request.body});
 				
