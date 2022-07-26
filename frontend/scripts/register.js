@@ -19,8 +19,9 @@ async function register(){
 
     }).then(async (response) => {
         let result = await response.json()
-        console.log(result);
         if(result.success){
+            sessionStorage.setItem("name",name.value);
+            sessionStorage.setItem("id",result.data.insertId);
             location.href = "home.html";
         } else {
             email.value = "";
