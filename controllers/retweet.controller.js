@@ -32,16 +32,17 @@ class ReTweetController {
 					data: { 
 							action : CONSTANTS.ACTION.SOME_CREATED,
 							headers : { ...request.headers},
-							request: {...request.params,...request.body},
+		 					request: {...request.params,...request.body},
 							response: result
 				}
 				});
 			} catch (error) {
 				next(error);
 			}
-		})
-        app.route('/:userId/retweet/:reTweetId')
-        .put(async (request, response, next) => {
+		}) 
+
+        app.route('/:userId/tweet/:tweetId/undoRetweet')
+        .post(async (request, response, next) => {
 			try {
 				const {
 					client_code

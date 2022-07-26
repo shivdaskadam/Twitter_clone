@@ -41,7 +41,7 @@ class FollowController {
 			}
 		})
 
-		app.route('/:userId/followers')
+		app.route('/:id/followList/:userId/Followers')
 		.get(async (request, response, next) => {
 			try {
 				const {
@@ -72,7 +72,7 @@ class FollowController {
 			}
 		})
 
-		app.route('/:userId/following')
+		app.route('/:id/followList/:userId/Following')
 		.get(async (request, response, next) => {
 			try {
 				const {
@@ -104,7 +104,7 @@ class FollowController {
 		})
 
 		app.route('/:userId/unfollow/:followingId')
-        .put(async (request, response, next) => {
+        .post(async (request, response, next) => {
 			try {
 				const {
 					client_code

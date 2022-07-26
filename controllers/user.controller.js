@@ -41,7 +41,7 @@ class UserController {
 			}
 		})
 		
-		app.route('/:userId/info')
+		app.route('/:id/info/:searchUserId')
 		.get(async (request, response, next) => {
 			try {
 				const {

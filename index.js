@@ -31,11 +31,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.text());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors({ credentials: true, origin: true }));
-app.use(session({ 
-  secret: 'Twitter_secret',
-  resave: false,
-  saveUninitialized: true,
-}))
+// app.use(session({ 
+//   secret: 'Twitter_secret',
+//   resave: false,
+//   saveUninitialized: true,
+// }))
 
 
 //use request context as middleware

@@ -37,11 +37,14 @@ class UserBiz {
 			try {
                 const queryTweet = queryRepo.sql.SELECT.USERTWEET;
                 const queryReTweet = queryRepo.sql.SELECT.USERRETWEET;
+				const queryFollow = queryRepo.sql.SELECT.USERFOLLOW;
                 const queryRepository = new QueryRepository();
 				const tweetResult = await queryRepository.get_all_data(queryTweet,data);
                 console.log(tweetResult);
                 const reTweetResult = await queryRepository.get_all_data(queryReTweet,data);
                 console.log(reTweetResult);
+				const followResult = await queryRepository.get_all_data(queryFollow,data);
+                console.log(followResult);
                 const map = new Map();
 				if(tweetResult){
                 	tweetResult.forEach((val) => map.set(val.created_at, { ...val }));
@@ -49,7 +52,8 @@ class UserBiz {
 				if(reTweetResult){
                 	reTweetResult.forEach((val) => map.set(val.created_at, { ...val }));
 				}
-                const result = [...map.values()].sort((x, y) => y.created_at - x.created_at);
+                const tweets = [...map.values()].sort((x, y) => y.created_at - x.created_at);
+				const result = {tweets,followResult}
 				resolve(result);
 			} catch(error){
 				return reject(error);
