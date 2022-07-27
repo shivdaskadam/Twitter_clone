@@ -13,9 +13,6 @@ class UserController {
 					client_code
 				} = request.header;
 
-				// const validator = new RequestValidator(someSchema);
-				// validator.create({...request.params,...request.query});
-
 				const userBiz = new UserBiz();
 				console.log(request.params)
 				const _result = await userBiz.fetchHomedata({...request.params,...request.query});

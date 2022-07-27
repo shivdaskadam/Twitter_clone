@@ -47,8 +47,6 @@ class ReTweetController {
 				const {
 					client_code
 				} = request.header;
-				// const validator = new RequestValidator(tweetSchema);
-				// validator.create({...request.params,...request.body});
 
 				const reTweetBiz = new ReTweetBiz();
 				const _result = await reTweetBiz.update({...request.params,...request.body});

@@ -1,7 +1,8 @@
 const queryRepo = require('../constants/queryRepo');
 const EventEmitterBiz = require('./helpers/eventEmitter.biz');
 const QueryRepository = require('../repositories/query.repository');
-
+const RegisterBiz = require('./register.biz');
+const moment = require('moment');
 class LoginBiz {
 	constructor() {
 		this.eventEmitter = new EventEmitterBiz();
@@ -12,8 +13,13 @@ class LoginBiz {
 			try {
                 let loggedIn = true;
                 const query = queryRepo.sql.SELECT.LOGIN;
+				const queryTime = queryRepo.sql.SELECT.TIME;
                 const queryRepository = new QueryRepository();
-				const response = await queryRepository.get_sql_data(query,{...data.body});
+				let cur_date = await queryRepository.get_sql_data(queryTime,data);
+				cur_date = moment(cur_date.created_at).format('YYYY-MM-DD HH:mm:ss');
+				data.password = await new RegisterBiz().encryptPassword(data.password, cur_date.toString());
+				console.log(data.password)
+				const response = await queryRepository.get_sql_data(query,data);
 				console.log(response)
                 if(response==null){
                     loggedIn = false;
